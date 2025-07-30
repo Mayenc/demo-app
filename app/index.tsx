@@ -16,16 +16,18 @@ import TabCalender from "./(tabs)/calender";
 import TabMain from "./(tabs)/main";
 import TabNews from "./(tabs)/news";
 import TabProduct from "./(tabs)/product";
+import TabMyVehicle from "./(tabs)/myvehicle";
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-type ScreenKey = "main" | "news" | "product" | "calender";
+type ScreenKey = "main" | "news" | "product" | "calender" | "myvehicle";
 
 const screenComponents: Record<ScreenKey, React.ComponentType> = {
   main: TabMain,
   news: TabNews,
   product: TabProduct,
-  calender: TabCalender
+  calender: TabCalender,
+  myvehicle: TabMyVehicle,
 };
 
 const DRAWER_WIDTH = 240;
@@ -79,14 +81,20 @@ export default function Index() {
       <View style={[styles.tabBarContainer]}>
         <View style={styles.tabBar}>
           <TabButton
-            iconName="home-outline"
-            onPress={() => setActiveScreen("main")}
-            active={activeScreen === "main"}
+            iconName="car-outline"
+            onPress={() => setActiveScreen("myvehicle")}
+            active={activeScreen === "myvehicle"}
           />
+
           <TabButton
             iconName="cube-outline"
             onPress={() => setActiveScreen("product")}
             active={activeScreen === "product"}
+          />
+          <TabButton
+            iconName="home-outline"
+            onPress={() => setActiveScreen("main")}
+            active={activeScreen === "main"}
           />
           <TabButton
             iconName="newspaper-outline"

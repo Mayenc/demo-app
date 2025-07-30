@@ -7,6 +7,8 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 import { useState } from 'react';
 import { StatusBar, StatusBarStyle, StyleSheet } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
 const STYLES = ['default', 'dark-content', 'light-content'] as const;
 const TRANSITIONS = ['fade', 'slide', 'none'] as const;
 export default function RootLayout() {
@@ -48,23 +50,25 @@ export default function RootLayout() {
   }
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
-         <StatusBar
-          animated={true}
-          backgroundColor="#61dafb"
-          barStyle={statusBarStyle}
-          showHideTransition={statusBarTransition}
-          hidden={hidden}
-        />
-        <Stack screenOptions={
-            {
-              headerShown: false
-            }
-          }/>
-      </SafeAreaView>
-    </SafeAreaProvider>
-    
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <SafeAreaView style={styles.container}>
+          <StatusBar
+            animated={true}
+            backgroundColor="#61dafb"
+            barStyle={statusBarStyle}
+            showHideTransition={statusBarTransition}
+            hidden={hidden}
+          />
+          <Stack screenOptions={
+              {
+                headerShown: false
+              }
+            }/>
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
+
   );
 }
 const styles = StyleSheet.create({
