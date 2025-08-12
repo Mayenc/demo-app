@@ -2,7 +2,7 @@ import { useFonts } from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
 import { usePathname, useRouter } from 'expo-router';
 import React, { useRef, useState } from 'react';
-import { Animated, Image, Platform, StatusBar, StatusBarStyle, StyleSheet, TouchableOpacity, useColorScheme, View } from 'react-native';
+import { Linking, Animated, Image, Platform, StatusBar, StatusBarStyle, StyleSheet, TouchableOpacity, useColorScheme, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 // Screens
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -53,6 +53,11 @@ export default function RootUI({ children }: { children: React.ReactNode }) {
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
 
+  const phoneNumber = '0123456789'; 
+
+  const makeCall = () => {
+    Linking.openURL(`tel:${phoneNumber}`);
+  };
   
   const insets = useSafeAreaInsets();
   
@@ -62,10 +67,32 @@ export default function RootUI({ children }: { children: React.ReactNode }) {
   const pathname = usePathname(); // Lấy route hiện tại để set active
   const getActive = (route: string) => pathname.startsWith(route);
 
+  //Code for Fab Menu
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuAnim = useRef(new Animated.Value(0)).current; // 0 = closed, 1 = open
+
+  const toggleMenu = () => {
+    Animated.spring(menuAnim, {
+      toValue: menuOpen ? 0 : 1,
+      useNativeDriver: true,
+    }).start();
+    setMenuOpen(!menuOpen);
+  };
+
+  const menuHeight = 300;
+  const menuTranslate = menuAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 0], // move up when opening
+  });
+
+  const menuOpacity = menuAnim;
+
   if (!loaded) {
     // Async font loading only occurs in development.
     return null;
   }
+
+  
   
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -112,6 +139,41 @@ export default function RootUI({ children }: { children: React.ReactNode }) {
             {/* Content */}
             <View style={{ flex: 1, paddingBottom: 80 }}>
               {children}
+            </View>
+
+            {/* FLOATING ACTION BUTTON MENU */}
+            <View style={[styles.fabContainer, {display: "flex", justifyContent: "center"}]} pointerEvents="box-none">
+              <Animated.View
+                style={[
+                  styles.menuContainer,
+                  {
+                    borderRadius: styles.fabButton.borderRadius,
+                    width: styles.fabButton.width,
+                    transform: [{ translateY: menuTranslate }],
+                    opacity: menuOpacity,
+                    paddingBottom: styles.fabButton.width
+                  },
+                ]}
+              >
+                <TouchableOpacity style={styles.menuItem} onPress={makeCall}>
+                  <Icon name="call-outline" size={22} color="#fff" />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.menuItem} onPress={() => alert("Press car")}>
+                  <Icon name="car-outline" size={22} color="#fff" />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.menuItem} onPress={() => alert("Press chat")}>
+                  <Icon name="chatbox-ellipses-outline" size={22} color="#fff" />
+                </TouchableOpacity>
+              </Animated.View>
+
+              <TouchableOpacity 
+                style={[
+                  styles.fabButton,
+                  { backgroundColor: menuOpen ? "white" : "#011e50" }
+                ]}
+                onPress={toggleMenu}>
+                <Icon name={"headset-outline"} size={28} style={{ color: !menuOpen ? "white" : "#011e50" }} />
+              </TouchableOpacity>
             </View>
 
             {/* Tab Bar */}
@@ -207,5 +269,41 @@ const styles = StyleSheet.create({
   
   iconSpacing: {
     marginRight: 15,
+  },
+
+  fabContainer: {
+    position: "absolute",
+    right: 20,
+    bottom: 80, // above the tab bar
+    alignItems: "flex-end",
+    zIndex: 30,
+  },
+  fabButton: {
+    width: 56,
+    height: 56,
+    borderWidth: 6,
+    borderColor: "#011e50",
+    borderRadius: 28,
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 5,
+  },
+  menuContainer: {
+    marginBottom: -56,
+    backgroundColor: "#011e50",
+    borderRadius: 10,
+    paddingVertical: 8,
+    width: 150,
+  },
+
+  menuItem: {
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  menuText: {
+    color: "#fff",
+    marginLeft: 10,
+    fontSize: 14,
   },
 });

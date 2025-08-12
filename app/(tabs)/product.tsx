@@ -10,9 +10,9 @@ export default function TabProduct() {
 
 return (
         <View style={{ flex: 1 }}>
-          <TouchableOpacity style={styles.chatButton} onPress={makeCall}>
+          {/* <TouchableOpacity style={styles.chatButton} onPress={makeCall}>
             <Ionicons name="call" size={28} color="#fff" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
     )
     
