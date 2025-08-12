@@ -2,12 +2,12 @@
 
 import React from 'react';
 import {
-  View,
-  Text,
-  Image,
-  FlatList,
-  StyleSheet,
   Dimensions,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import { RectButton, Swipeable } from 'react-native-gesture-handler';
 
@@ -37,6 +37,90 @@ const cars = [
     },
     {
         id: '2',
+        name: 'Ford Mustang',
+        image: require('@/assets/images/volkswagen.png'),
+        details: {
+            color: 'Blue',
+            year: 2020,
+            license: 'XYZ-5678',
+            vin: '1FA6P8TH1L5123456',
+            warranty: {
+                expiration: '30/09/2024',
+            },
+            maintenance: {
+                last: '15/03/2024',
+                next: '15/09/2024',
+            },
+            registration: {
+                next: '20/11/2025',
+            },
+        },
+    },
+    {
+        id: '3',
+        name: 'Ford Mustang',
+        image: require('@/assets/images/volkswagen.png'),
+        details: {
+            color: 'Blue',
+            year: 2020,
+            license: 'XYZ-5678',
+            vin: '1FA6P8TH1L5123456',
+            warranty: {
+                expiration: '30/09/2024',
+            },
+            maintenance: {
+                last: '15/03/2024',
+                next: '15/09/2024',
+            },
+            registration: {
+                next: '20/11/2025',
+            },
+        },
+    },
+    {
+        id: '4',
+        name: 'Ford Mustang',
+        image: require('@/assets/images/volkswagen.png'),
+        details: {
+            color: 'Blue',
+            year: 2020,
+            license: 'XYZ-5678',
+            vin: '1FA6P8TH1L5123456',
+            warranty: {
+                expiration: '30/09/2024',
+            },
+            maintenance: {
+                last: '15/03/2024',
+                next: '15/09/2024',
+            },
+            registration: {
+                next: '20/11/2025',
+            },
+        },
+    },
+    {
+        id: '5',
+        name: 'Ford Mustang',
+        image: require('@/assets/images/volkswagen.png'),
+        details: {
+            color: 'Blue',
+            year: 2020,
+            license: 'XYZ-5678',
+            vin: '1FA6P8TH1L5123456',
+            warranty: {
+                expiration: '30/09/2024',
+            },
+            maintenance: {
+                last: '15/03/2024',
+                next: '15/09/2024',
+            },
+            registration: {
+                next: '20/11/2025',
+            },
+        },
+    },
+    {
+        id: '6',
         name: 'Ford Mustang',
         image: require('@/assets/images/volkswagen.png'),
         details: {

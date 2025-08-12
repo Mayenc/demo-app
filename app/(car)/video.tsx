@@ -7,7 +7,7 @@ const videoData = [
     id: '1',
     title: 'Video 1',
     description: 'Mô tả cho video 1',
-    uri: 'https://www.youtube.com/watch?v=9kVqgZE9HAQ&list=RD9kVqgZE9HAQ&start_radio=1',
+    uri: 'https://vw-image.s3.ap-southeast-1.amazonaws.com/image/options.mp4',
   },
   {
     id: '2',
@@ -20,6 +20,12 @@ const videoData = [
     title: 'Video 3',
     description: 'Mô tả cho video 3',
     uri: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
+  },
+  {
+    id: '4',
+    title: 'Video 3',
+    description: 'Mô tả cho video 3',
+    uri: 'https://www.youtube.com/embed/cvaIgq5j2Q8?si=pg3fEY9sGpI0CrHe',
   },
 ];
 

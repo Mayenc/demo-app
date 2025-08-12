@@ -146,13 +146,85 @@ export default function HomeScreen() {
                 />
           </View>
         </View>
+        <View style={styles.contentNews}>
+          <View style={styles.cardTitleNews}>
+            <Text style={styles.titleHeaderNews}>Tin tức nổi bật</Text>
+            <Text style={styles.linkTitleNews}>Xem tất cả <Ionicons name="chevron-forward" style={styles.linkIconNews}/></Text>
+          </View>
+          <View style={styles.listNews}>
+             <FlatList
+                  ref={horizontalListRef}
+                  data={horizontalData} 
+                  renderItem={renderHorizontalItem}
+                  keyExtractor={(item, index) => item.id + index}
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  pagingEnabled
+                  snapToAlignment="center"
+                />
+          </View>
+        </View>
+        <View style={styles.contentNews}>
+          <View style={styles.cardTitleNews}>
+            <Text style={styles.titleHeaderNews}>Tin tức nổi bật</Text>
+            <Text style={styles.linkTitleNews}>Xem tất cả <Ionicons name="chevron-forward" style={styles.linkIconNews}/></Text>
+          </View>
+          <View style={styles.listNews}>
+             <FlatList
+                  ref={horizontalListRef}
+                  data={horizontalData} 
+                  renderItem={renderHorizontalItem}
+                  keyExtractor={(item, index) => item.id + index}
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  pagingEnabled
+                  snapToAlignment="center"
+                />
+          </View>
+        </View>
+        <View style={styles.contentNews}>
+          <View style={styles.cardTitleNews}>
+            <Text style={styles.titleHeaderNews}>Tin tức nổi bật</Text>
+            <Text style={styles.linkTitleNews}>Xem tất cả <Ionicons name="chevron-forward" style={styles.linkIconNews}/></Text>
+          </View>
+          <View style={styles.listNews}>
+             <FlatList
+                  ref={horizontalListRef}
+                  data={horizontalData} 
+                  renderItem={renderHorizontalItem}
+                  keyExtractor={(item, index) => item.id + index}
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  pagingEnabled
+                  snapToAlignment="center"
+                />
+          </View>
+        </View>
+        <View style={styles.contentNews}>
+          <View style={styles.cardTitleNews}>
+            <Text style={styles.titleHeaderNews}>Tin tức nổi bật</Text>
+            <Text style={styles.linkTitleNews}>Xem tất cả <Ionicons name="chevron-forward" style={styles.linkIconNews}/></Text>
+          </View>
+          <View style={styles.listNews}>
+             <FlatList
+                  ref={horizontalListRef}
+                  data={horizontalData} 
+                  renderItem={renderHorizontalItem}
+                  keyExtractor={(item, index) => item.id + index}
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  pagingEnabled
+                  snapToAlignment="center"
+                />
+          </View>
+        </View>
         <View style={styles.contentVideo}>
           <View style={styles.cardTitleVideo}>
             <View>
                 <Text style={styles.titleHeaderVideo}>Video và dịch vụ</Text>
             </View>
             <View style={styles.titleViewAllVideo}>
-              <TouchableOpacity onPress={ () => router.push('/(car)/video')}>
+              <TouchableOpacity onPress={ () => router.push('/video')}>
                   <Text style={styles.linkTitleVideo}>Xem tất cả <Ionicons name="chevron-forward" style={styles.linkIconVideo}/></Text>
               </TouchableOpacity>
             </View>
@@ -179,6 +251,11 @@ export default function HomeScreen() {
                 <Text style={styles.linkTitleAR}>Trải nghiệm <Ionicons name="chevron-forward" style={styles.linkIconVideo}/></Text>
             </TouchableOpacity>
           </View>
+        </View>
+        <View style={{ flex: 1 }}>
+          <TouchableOpacity style={styles.chatButton} onPress={() => alert("Chat opened!")}>
+            <Ionicons name="chatbubble-ellipses" size={28} color="#fff" />
+          </TouchableOpacity>
         </View>
     </View>
   );
@@ -432,5 +509,61 @@ const styles = StyleSheet.create({
   },
   linkTitleAR: {
     color: '#43a2faff',
-  }
+  },
+  chatButton: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+    backgroundColor: '#007AFF',
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 5, // Android
+    shadowColor: '#000', // iOS
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+  },
+  contentVideo2: {
+    marginTop: 10,
+    backgroundColor: '#e9e9e9ff',
+    height: 200
+  },
+  cardTitleVideo2: {
+    marginLeft: 20,
+    flexDirection: 'row',
+    marginTop: 10,
+    flex: 1,  
+  },
+  titleHeaderVideo2:{
+    fontWeight: 'bold',
+    fontSize: 15
+  },
+  titleViewAllVideo2: {
+    position: 'absolute',
+    right: 15
+  },
+  linkTitleVideo2: {
+    // position: 'absolute',
+    // right: 15,
+    color: '#43a2faff',
+  },
+  linkIconVideo2: {
+    //marginTop: 10
+  },
+  listVideo2:{
+    height: 160,
+    left: 10
+  },
+  imageVideo2: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
+  },
+  cardImgVideo2: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
 });
